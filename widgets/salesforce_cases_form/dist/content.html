@@ -1,3 +1,5 @@
+<script src="https://static.customer-hub.northpass.com/widget-sdk/latest/index.umd.js"></script>
+
 <div class="sf-widget-container">
   <div class="guest-overlay" style="display: none;">
     <div class="guest-overlay-message">
@@ -152,11 +154,13 @@
 
 <script>
 (() => {
-  const widget = document.querySelector('registry-widget[data-widget-type="registry:platform:ootb_widgets:salesforce_cases_form"]');
+  const widget = document.querySelector('gs-cc-registry-widget[data-widget-type="registry:platform:ootb_widgets:salesforce_cases_form"]');
   if (!widget || !widget.shadowRoot) {
-    console.error('Could not find registry-widget or its shadowRoot.');
+    console.error('Could not find gs-cc-registry-widget or its shadowRoot.');
     return;
   }
+  if (widget._sfWidgetInitialized) return;
+  widget._sfWidgetInitialized = true;
 
   const root = widget.shadowRoot;
   const sdk = new WidgetServiceSDK();

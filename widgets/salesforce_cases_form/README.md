@@ -38,30 +38,29 @@ Copy your Consumer Key and Consumer Secret — you'll need these for the connect
 
 ![Consumer Key and Secret](README/04-consumer-key-and-secret.png)
 
-### Step 5: Create Connectors from Templates
+### Step 5: Create Secrets
 
-In your community admin panel, create new connectors from the available templates.
+In your community admin panel, go to **Connectors > Secrets** and create two secrets:
 
-> **Required Connectors:**  
-> You need to create all four of these connectors:
-> - Salesforce Case Lookup by Contact Email
-> - Salesforce Contact Lookup by Email
-> - Salesforce Create Case for Contact
-> - Salesforce Create Contact and Case
+- `salesforce_client_id` — your Consumer Key from Step 4
+- `salesforce_client_secret` — your Consumer Secret from Step 4
 
-![Create Connectors from Templates](README/05-create-connectors-from-templates.png)
+![Add Secrets](README/05-add-secrets.png)
 
-Provide the URL to your Salesforce instance along with the Consumer Key and Secret.
+### Step 6: Fork Repository and Configure Salesforce URL
 
-![Connector Configuration](README/06-connector-configuration.png)
+1. Fork this repository to your own GitHub account
+2. Edit `connectors_registry.json` in the repository root
+3. Replace every occurrence of `YOUR_INSTANCE.my.salesforce.com` with your actual Salesforce instance domain (e.g., `mycompany.my.salesforce.com`)
+4. Commit and push the changes
 
-### Step 6: Add Widget Source Repository
+### Step 7: Connect Repository
 
-Add the current repository `https://raw.githubusercontent.com/gs-mrozmus/custom-widgets/refs/heads/main/widget_registry.json` to your Widget Sources by `Add New Endpoint` button.
+In your community admin panel, go to **Widget Sources** and connect your forked GitHub repository.
 
 ![Add Widget Source](README/07-add-widget-source.png)
 
-### Step 7: Add Widget to Your Community
+### Step 8: Add Widget to Your Community
 
 Add the new Salesforce Cases widget to your community.
 
