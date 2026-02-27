@@ -1,28 +1,26 @@
 {
   "widgets": [
     {
-      "title": "Salesforce cases form",
-      "description": "Display and create Salesforce cases",
-      "version": "1.0.0",
       "category": "Salesforce",
-      "type": "salesforce_cases_form",
-      "imageName": "salesforce_widget",
-      "content": {
-        "endpoint": "https://raw.githubusercontent.com/gs-mrozmus/custom-widgets/refs/heads/main/widgets/salesforce_cases_form/content.html",
-        "method": "GET",
-        "requiresAuthentication": false,
-        "cacheStrategy": "no-cache"
-      },
       "containers": [
         "Full width"
       ],
-      "widgetsLibrary": true,
+      "description": "Display and create Salesforce cases",
+      "imageName": "salesforce_widget",
       "settings": {
         "configurable": true,
         "editable": true,
         "removable": true,
         "shared": false,
         "movable": false
+      },
+      "title": "Salesforce cases form",
+      "version": "1.0.0",
+      "widgetsLibrary": true,
+      "type": "salesforce_cases_form",
+      "source": {
+        "path": "widgets/salesforce_cases_form/dist",
+        "entry": "content.html"
       }
     }
   ]
