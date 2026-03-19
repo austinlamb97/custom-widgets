@@ -23,5 +23,29 @@
         "entry": "content.html"
       }
     }
+    ,
+    {
+      "category": "Salesforce",
+      "containers": [
+        "Full width"
+      ],
+      "description": "Submit a Salesforce lead referral from the community",
+      "imageName": "salesforce_widget",
+      "settings": {
+        "configurable": true,
+        "editable": true,
+        "removable": true,
+        "shared": false,
+        "movable": false
+      },
+      "title": "Salesforce lead form",
+      "version": "1.0.0",
+      "widgetsLibrary": true,
+      "type": "salesforce_lead_form",
+      "source": {
+        "path": "widgets/salesforce_lead_form/dist",
+        "entry": "content.html"
+      }
+    }
   ]
 }

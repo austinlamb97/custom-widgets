@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "title": "Salesforce lead form",
+  "description": "Submit a Salesforce lead referral from the community",
+  "category": "Salesforce",
+  "imageName": "salesforce_widget",
+  "source": {
+    "path": "dist",
+    "entry": "content.html"
+  }
+}
