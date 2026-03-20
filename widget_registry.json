@@ -5,29 +5,6 @@
       "containers": [
         "Full width"
       ],
-      "description": "Display and create Salesforce cases",
-      "imageName": "salesforce_widget",
-      "settings": {
-        "configurable": true,
-        "editable": true,
-        "removable": true,
-        "shared": false,
-        "movable": false
-      },
-      "title": "Salesforce cases form",
-      "version": "1.0.0",
-      "widgetsLibrary": true,
-      "type": "salesforce_cases_form",
-      "source": {
-        "path": "widgets/salesforce_cases_form/dist",
-        "entry": "content.html"
-      }
-    },
-    {
-      "category": "Salesforce",
-      "containers": [
-        "Full width"
-      ],
       "description": "Submit a Salesforce lead referral from the community",
       "imageName": "salesforce_widget",
       "settings": {
