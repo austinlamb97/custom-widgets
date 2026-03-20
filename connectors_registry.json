@@ -23,7 +23,7 @@
           "token_url": "https://YOUR_INSTANCE.my.salesforce.com/services/oauth2/token"
         }
       },
-      "permalink": "salesforce-contact-lookup-by-email"
+      "permalink": "salesforce-contact-lookup-by-email-v2"
     },
     {
       "name": "Salesforce Case Lookup by Contact Email",
@@ -48,7 +48,7 @@
           "token_url": "https://YOUR_INSTANCE.my.salesforce.com/services/oauth2/token"
         }
       },
-      "permalink": "salesforce-case-lookup-by-contact-email"
+      "permalink": "salesforce-case-lookup-by-contact-email-v2"
     },
     {
       "name": "Salesforce Create Case for Contact",
@@ -67,7 +67,7 @@
         }
       },
       "request_body": "{% set body = body_text | from_json %}\n{\n  \"compositeRequest\": [\n    {\n      \"method\": \"GET\",\n      \"url\": \"/services/data/v58.0/query?q=SELECT Id FROM Contact WHERE Email = '{{ user.email }}'\",\n      \"referenceId\": \"foundContact\"\n    },\n    {\n      \"method\": \"POST\",\n      \"url\": \"/services/data/v58.0/sobjects/Case\",\n      \"referenceId\": \"newCase\",\n      \"body\": {\n        \"Subject\": \"{{ body.subject }}\",\n        \"Description\": \"{{ body.description }}\",\n        \"SuppliedPhone\": \"{{ body.phone }}\",\n        \"ContactId\": \"@{foundContact.records[0].Id}\"\n      }\n    }\n  ]\n}",
-      "permalink": "salesforce-create-case-for-contact"
+      "permalink": "salesforce-create-case-for-contact-v2"
     },
     {
       "name": "Salesforce Create Lead",
@@ -105,7 +105,7 @@
         }
       },
       "request_body": "{% set body = body_text | from_json %}\n{\n  \"compositeRequest\": [\n    {\n      \"method\": \"POST\",\n      \"url\": \"/services/data/v58.0/sobjects/Contact\",\n      \"referenceId\": \"newContact\",\n      \"body\": {\n        \"LastName\": \"{{ body.contactName }}\",\n        \"Email\": \"{{ user.email }}\",\n        \"Phone\": \"{{ body.phone }}\"\n      }\n    },\n    {\n      \"method\": \"POST\",\n      \"url\": \"/services/data/v58.0/sobjects/Case\",\n      \"referenceId\": \"newCase\",\n      \"body\": {\n        \"Subject\": \"{{ body.subject }}\",\n        \"Description\": \"{{ body.description }}\",\n        \"SuppliedName\": \"{{ body.contactName }}\",\n        \"SuppliedEmail\": \"{{ user.email }}\",\n        \"SuppliedPhone\": \"{{ body.phone }}\",\n        \"ContactId\": \"@{newContact.Id}\"\n      }\n    }\n  ]\n}",
-      "permalink": "salesforce-create-contact-and-case"
+      "permalink": "salesforce-create-contact-and-case-v2"
     }
   ]
 }

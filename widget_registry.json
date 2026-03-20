@@ -22,8 +22,7 @@
         "path": "widgets/salesforce_cases_form/dist",
         "entry": "content.html"
       }
-    }
-    ,
+    },
     {
       "category": "Salesforce",
       "containers": [
