@@ -2,7 +2,7 @@
   "connectors": [
     {
       "name": "Salesforce Create Lead",
-      "url": "https://YOUR_INSTANCE.my.salesforce.com/services/data/v58.0/sobjects/Lead",
+      "url": "https://emailmonkey.my.salesforce.com/services/data/v64.0/sobjects/Lead",
       "method": "POST",
       "headers": [
         { "key": "Content-Type", "value": "application/json", "overridable": false },
@@ -13,7 +13,7 @@
         "config": {
           "client_id": "{{ get_secret('salesforce_client_id') }}",
           "client_secret": "{{ get_secret('salesforce_client_secret') }}",
-          "token_url": "https://YOUR_INSTANCE.my.salesforce.com/services/oauth2/token"
+          "token_url": "https://emailmonkey.my.salesforce.com/services/oauth2/token"
         }
       },
       "request_body": "{% set body = body_text | from_json %}\n{\n  \"FirstName\": \"{{ body.firstName }}\",\n  \"LastName\": \"{{ body.lastName }}\",\n  \"Email\": \"{{ body.email }}\",\n  \"Company\": \"{{ body.company }}\",\n  \"Title\": \"{{ body.title }}\",\n  \"Phone\": \"{{ body.phone }}\",\n  \"LeadSource\": \"{{ body.leadSource }}\",\n  \"Region__c\": \"{{ body.region }}\",\n  \"Product_Interest__c\": \"{{ body.productInterest }}\",\n  \"Help_Type__c\": \"{{ body.helpType }}\",\n  \"Partner_Notes__c\": \"{{ body.partnerNotes }}\",\n  \"Requesting_On_Behalf_Of__c\": \"{{ body.requestingOnBehalfOf }}\",\n  \"Referrer_Email__c\": \"{{ body.referrerEmail }}\"\n}",
