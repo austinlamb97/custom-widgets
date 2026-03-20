@@ -37,40 +37,6 @@
       </div>
     </div>
 
-    <!--
-      PLACEHOLDER FIELDS — confirm custom field API names in Salesforce before go-live.
-      Current placeholders:
-        region               -> Region__c
-        productInterest      -> Product_Interest__c
-        helpType             -> Help_Type__c
-        partnerNotes         -> Partner_Notes__c
-        requestingOnBehalfOf -> Requesting_On_Behalf_Of__c
-        referrerEmail        -> Referrer_Email__c
-      Update these in both content.html (payload object below) and connectors_registry.json.
-    -->
-
-    <label for="region">Region</label>
-    <input type="text" id="region" name="region" placeholder="e.g. North America, EMEA">
-
-    <label for="productInterest">Product Interest</label>
-    <input type="text" id="productInterest" name="productInterest" placeholder="e.g. CS Platform, PX, Community">
-
-    <label for="helpType">Help Type</label>
-    <input type="text" id="helpType" name="helpType" placeholder="e.g. Demo, POC, Pricing">
-
-    <label for="requestingOnBehalfOf">Requesting on Behalf of</label>
-    <input type="text" id="requestingOnBehalfOf" name="requestingOnBehalfOf" placeholder="Name or account">
-
-    <label for="referrerEmail">Referrer Email</label>
-    <input type="email" id="referrerEmail" name="referrerEmail">
-
-    <label for="partnerNotes">Partner Notes</label>
-    <textarea id="partnerNotes" name="partnerNotes" placeholder="Additional context for the sales team"></textarea>
-
-    <!--
-      leadSource is set automatically to "Partner Referral" on submit.
-      Update the default value below if your SF org uses a different picklist value.
-    -->
     <input type="hidden" id="leadSource" name="leadSource" value="Partner Referral">
 
     <div class="status-message" id="statusMessage" style="display: none;"></div>
@@ -243,19 +209,13 @@
       }
 
       const payload = {
-        firstName:            root.getElementById('firstName').value.trim(),
-        lastName:             root.getElementById('lastName').value.trim(),
-        email:                root.getElementById('email').value.trim(),
-        company:              root.getElementById('company').value.trim(),
-        title:                root.getElementById('title').value.trim(),
-        phone:                root.getElementById('phone').value.trim(),
-        leadSource:           root.getElementById('leadSource').value,
-        region:               root.getElementById('region').value.trim(),
-        productInterest:      root.getElementById('productInterest').value.trim(),
-        helpType:             root.getElementById('helpType').value.trim(),
-        partnerNotes:         root.getElementById('partnerNotes').value.trim(),
-        requestingOnBehalfOf: root.getElementById('requestingOnBehalfOf').value.trim(),
-        referrerEmail:        root.getElementById('referrerEmail').value.trim()
+        firstName:  root.getElementById('firstName').value.trim(),
+        lastName:   root.getElementById('lastName').value.trim(),
+        email:      root.getElementById('email').value.trim(),
+        company:    root.getElementById('company').value.trim(),
+        title:      root.getElementById('title').value.trim(),
+        phone:      root.getElementById('phone').value.trim(),
+        leadSource: root.getElementById('leadSource').value
       };
 
       sdk.connectors.execute({
