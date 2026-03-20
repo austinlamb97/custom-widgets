@@ -1,75 +1,6 @@
 {
   "connectors": [
     {
-      "name": "Salesforce Contact Lookup by Email",
-      "url": "https://YOUR_INSTANCE.my.salesforce.com/services/data/v58.0/query/",
-      "method": "GET",
-      "headers": [
-        { "key": "Content-Type", "value": "application/json", "overridable": false },
-        { "key": "Accept", "value": "application/json", "overridable": false }
-      ],
-      "query_parameters": [
-        {
-          "key": "q",
-          "value": "SELECT Id, FirstName, LastName, Email, Phone, Name FROM Contact WHERE Email = '{{ user.email }}'",
-          "overridable": false
-        }
-      ],
-      "authentication": {
-        "type": "oauth_client_credentials",
-        "config": {
-          "client_id": "{{ get_secret('salesforce_client_id') }}",
-          "client_secret": "{{ get_secret('salesforce_client_secret') }}",
-          "token_url": "https://YOUR_INSTANCE.my.salesforce.com/services/oauth2/token"
-        }
-      },
-      "permalink": "salesforce-contact-lookup-by-email-v2"
-    },
-    {
-      "name": "Salesforce Case Lookup by Contact Email",
-      "url": "https://YOUR_INSTANCE.my.salesforce.com/services/data/v58.0/query/",
-      "method": "GET",
-      "headers": [
-        { "key": "Content-Type", "value": "application/json", "overridable": false },
-        { "key": "Accept", "value": "application/json", "overridable": false }
-      ],
-      "query_parameters": [
-        {
-          "key": "q",
-          "value": "SELECT Id, CaseNumber, Subject, Status, Priority FROM Case WHERE Contact.Email = '{{ user.email }}' ORDER BY CreatedDate DESC",
-          "overridable": false
-        }
-      ],
-      "authentication": {
-        "type": "oauth_client_credentials",
-        "config": {
-          "client_id": "{{ get_secret('salesforce_client_id') }}",
-          "client_secret": "{{ get_secret('salesforce_client_secret') }}",
-          "token_url": "https://YOUR_INSTANCE.my.salesforce.com/services/oauth2/token"
-        }
-      },
-      "permalink": "salesforce-case-lookup-by-contact-email-v2"
-    },
-    {
-      "name": "Salesforce Create Case for Contact",
-      "url": "https://YOUR_INSTANCE.my.salesforce.com/services/data/v58.0/composite/",
-      "method": "POST",
-      "headers": [
-        { "key": "Content-Type", "value": "application/json", "overridable": false },
-        { "key": "Accept", "value": "application/json", "overridable": false }
-      ],
-      "authentication": {
-        "type": "oauth_client_credentials",
-        "config": {
-          "client_id": "{{ get_secret('salesforce_client_id') }}",
-          "client_secret": "{{ get_secret('salesforce_client_secret') }}",
-          "token_url": "https://YOUR_INSTANCE.my.salesforce.com/services/oauth2/token"
-        }
-      },
-      "request_body": "{% set body = body_text | from_json %}\n{\n  \"compositeRequest\": [\n    {\n      \"method\": \"GET\",\n      \"url\": \"/services/data/v58.0/query?q=SELECT Id FROM Contact WHERE Email = '{{ user.email }}'\",\n      \"referenceId\": \"foundContact\"\n    },\n    {\n      \"method\": \"POST\",\n      \"url\": \"/services/data/v58.0/sobjects/Case\",\n      \"referenceId\": \"newCase\",\n      \"body\": {\n        \"Subject\": \"{{ body.subject }}\",\n        \"Description\": \"{{ body.description }}\",\n        \"SuppliedPhone\": \"{{ body.phone }}\",\n        \"ContactId\": \"@{foundContact.records[0].Id}\"\n      }\n    }\n  ]\n}",
-      "permalink": "salesforce-create-case-for-contact-v2"
-    },
-    {
       "name": "Salesforce Create Lead",
       "url": "https://YOUR_INSTANCE.my.salesforce.com/services/data/v58.0/sobjects/Lead",
       "method": "POST",
@@ -87,25 +18,6 @@
       },
       "request_body": "{% set body = body_text | from_json %}\n{\n  \"FirstName\": \"{{ body.firstName }}\",\n  \"LastName\": \"{{ body.lastName }}\",\n  \"Email\": \"{{ body.email }}\",\n  \"Company\": \"{{ body.company }}\",\n  \"Title\": \"{{ body.title }}\",\n  \"Phone\": \"{{ body.phone }}\",\n  \"LeadSource\": \"{{ body.leadSource }}\",\n  \"Region__c\": \"{{ body.region }}\",\n  \"Product_Interest__c\": \"{{ body.productInterest }}\",\n  \"Help_Type__c\": \"{{ body.helpType }}\",\n  \"Partner_Notes__c\": \"{{ body.partnerNotes }}\",\n  \"Requesting_On_Behalf_Of__c\": \"{{ body.requestingOnBehalfOf }}\",\n  \"Referrer_Email__c\": \"{{ body.referrerEmail }}\"\n}",
       "permalink": "salesforce-create-lead"
-    },
-    {
-      "name": "Salesforce Create Contact and Case",
-      "url": "https://YOUR_INSTANCE.my.salesforce.com/services/data/v58.0/composite/",
-      "method": "POST",
-      "headers": [
-        { "key": "Content-Type", "value": "application/json", "overridable": false },
-        { "key": "Accept", "value": "application/json", "overridable": false }
-      ],
-      "authentication": {
-        "type": "oauth_client_credentials",
-        "config": {
-          "client_id": "{{ get_secret('salesforce_client_id') }}",
-          "client_secret": "{{ get_secret('salesforce_client_secret') }}",
-          "token_url": "https://YOUR_INSTANCE.my.salesforce.com/services/oauth2/token"
-        }
-      },
-      "request_body": "{% set body = body_text | from_json %}\n{\n  \"compositeRequest\": [\n    {\n      \"method\": \"POST\",\n      \"url\": \"/services/data/v58.0/sobjects/Contact\",\n      \"referenceId\": \"newContact\",\n      \"body\": {\n        \"LastName\": \"{{ body.contactName }}\",\n        \"Email\": \"{{ user.email }}\",\n        \"Phone\": \"{{ body.phone }}\"\n      }\n    },\n    {\n      \"method\": \"POST\",\n      \"url\": \"/services/data/v58.0/sobjects/Case\",\n      \"referenceId\": \"newCase\",\n      \"body\": {\n        \"Subject\": \"{{ body.subject }}\",\n        \"Description\": \"{{ body.description }}\",\n        \"SuppliedName\": \"{{ body.contactName }}\",\n        \"SuppliedEmail\": \"{{ user.email }}\",\n        \"SuppliedPhone\": \"{{ body.phone }}\",\n        \"ContactId\": \"@{newContact.Id}\"\n      }\n    }\n  ]\n}",
-      "permalink": "salesforce-create-contact-and-case-v2"
     }
   ]
 }
