@@ -1,6 +1,78 @@
 {
   "widgets": [
     {
+      "category": "Content",
+      "configuration": [
+        {
+          "name": "title",
+          "type": "text",
+          "label": "Title",
+          "defaultValue": ""
+        },
+        {
+          "name": "content",
+          "type": "text",
+          "label": "Content (plain text or HTML)",
+          "defaultValue": ""
+        },
+        {
+          "name": "alignment",
+          "type": "select",
+          "label": "Text Alignment",
+          "options": [
+            "left",
+            "center",
+            "right"
+          ],
+          "defaultValue": "left"
+        },
+        {
+          "name": "backgroundColor",
+          "type": "color",
+          "label": "Background Color",
+          "defaultValue": "#ffffff"
+        },
+        {
+          "name": "textColor",
+          "type": "color",
+          "label": "Text Color",
+          "defaultValue": "#000000"
+        },
+        {
+          "name": "padding",
+          "type": "select",
+          "label": "Padding",
+          "options": [
+            "none",
+            "small",
+            "medium",
+            "large"
+          ],
+          "defaultValue": "medium"
+        }
+      ],
+      "containers": [
+        "Full width"
+      ],
+      "description": "Configurable text and HTML content block for 2:1 containers",
+      "imageName": "content_block",
+      "settings": {
+        "configurable": true,
+        "editable": true,
+        "removable": true,
+        "shared": false,
+        "movable": false
+      },
+      "title": "Content Block",
+      "version": "1.0.0",
+      "widgetsLibrary": true,
+      "type": "content_block",
+      "source": {
+        "path": "widgets/content_block/dist",
+        "entry": "content.html"
+      }
+    },
+    {
       "category": "Salesforce",
       "containers": [
         "Full width"
