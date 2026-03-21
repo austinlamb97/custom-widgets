@@ -3,46 +3,48 @@
     {
       "category": "Content",
       "configuration": {
-        "title": {
-          "type": "text",
-          "label": "Title",
-          "defaultValue": ""
-        },
-        "content": {
-          "type": "text",
-          "label": "Content (plain text or HTML)",
-          "defaultValue": ""
-        },
-        "alignment": {
-          "type": "select",
-          "label": "Text Alignment",
-          "options": [
-            "left",
-            "center",
-            "right"
-          ],
-          "defaultValue": "left"
-        },
-        "backgroundColor": {
-          "type": "color",
-          "label": "Background Color",
-          "defaultValue": "#ffffff"
-        },
-        "textColor": {
-          "type": "color",
-          "label": "Text Color",
-          "defaultValue": "#000000"
-        },
-        "padding": {
-          "type": "select",
-          "label": "Padding",
-          "options": [
-            "none",
-            "small",
-            "medium",
-            "large"
-          ],
-          "defaultValue": "medium"
+        "properties": {
+          "title": {
+            "type": "text",
+            "label": "Title",
+            "defaultValue": ""
+          },
+          "content": {
+            "type": "text",
+            "label": "Content (plain text or HTML)",
+            "defaultValue": ""
+          },
+          "alignment": {
+            "type": "select",
+            "label": "Text Alignment",
+            "options": [
+              "left",
+              "center",
+              "right"
+            ],
+            "defaultValue": "left"
+          },
+          "backgroundColor": {
+            "type": "color",
+            "label": "Background Color",
+            "defaultValue": "#ffffff"
+          },
+          "textColor": {
+            "type": "color",
+            "label": "Text Color",
+            "defaultValue": "#000000"
+          },
+          "padding": {
+            "type": "select",
+            "label": "Padding",
+            "options": [
+              "none",
+              "small",
+              "medium",
+              "large"
+            ],
+            "defaultValue": "medium"
+          }
         }
       },
       "containers": [
