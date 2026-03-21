@@ -9,39 +9,45 @@
     "entry": "content.html"
   },
   "configuration": {
-    "properties": {
-      "title": {
+    "properties": [
+      {
+        "name": "title",
         "type": "text",
         "label": "Title",
         "defaultValue": ""
       },
-      "content": {
+      {
+        "name": "content",
         "type": "text",
         "label": "Content (plain text or HTML)",
         "defaultValue": ""
       },
-      "alignment": {
+      {
+        "name": "alignment",
         "type": "select",
         "label": "Text Alignment",
         "options": ["left", "center", "right"],
         "defaultValue": "left"
       },
-      "backgroundColor": {
+      {
+        "name": "backgroundColor",
         "type": "color",
         "label": "Background Color",
         "defaultValue": "#ffffff"
       },
-      "textColor": {
+      {
+        "name": "textColor",
         "type": "color",
         "label": "Text Color",
         "defaultValue": "#000000"
       },
-      "padding": {
+      {
+        "name": "padding",
         "type": "select",
         "label": "Padding",
         "options": ["none", "small", "medium", "large"],
         "defaultValue": "medium"
       }
-    }
+    ]
   }
 }
