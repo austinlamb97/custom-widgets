@@ -1,0 +1,85 @@
+<div class="cb-container" data-content="{{ content }}">
+  <h2 class="cb-title">{{ title }}</h2>
+  <div class="cb-body"></div>
+</div>
+
+<style>
+  :host {
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  .cb-container {
+    width: 100%;
+    height: 100%;
+    background-color: {{ backgroundColor }};
+    color: {{ textColor }};
+    text-align: {{ alignment }};
+    padding: var(--cb-padding);
+    font-family: inherit;
+    line-height: 1.6;
+    overflow: auto;
+  }
+  .cb-title {
+    margin: 0 0 16px 0;
+    font-size: 1.4em;
+    font-weight: 700;
+    color: {{ textColor }};
+    line-height: 1.3;
+  }
+  .cb-title:empty {
+    display: none;
+  }
+  .cb-body {
+    font-size: 1em;
+    margin: 0;
+  }
+  .cb-body:empty {
+    display: none;
+  }
+  @media (max-width: 600px) {
+    .cb-title {
+      font-size: 1.2em;
+    }
+  }
+</style>
+
+<script>
+(() => {
+  const widget = document.querySelector('gs-cc-registry-widget[data-widget-type="registry:platform:ootb_widgets:content_block"]');
+  if (!widget || !widget.shadowRoot) {
+    console.error('Content Block: could not find gs-cc-registry-widget or its shadowRoot.');
+    return;
+  }
+  if (widget._contentBlockInitialized) return;
+  widget._contentBlockInitialized = true;
+
+  const root = widget.shadowRoot;
+
+  const paddingMap = {
+    none:   '0',
+    small:  '12px',
+    medium: '24px',
+    large:  '40px'
+  };
+
+  const rawPadding = '{{ padding }}' || 'medium';
+  const resolvedPadding = paddingMap[rawPadding] !== undefined ? paddingMap[rawPadding] : paddingMap.medium;
+
+  const container = root.querySelector('.cb-container');
+  if (container) {
+    container.style.setProperty('--cb-padding', resolvedPadding);
+  }
+
+  const bodyEl = root.querySelector('.cb-body');
+  if (bodyEl && container) {
+    bodyEl.innerHTML = container.dataset.content || '';
+  }
+})();
+</script>
