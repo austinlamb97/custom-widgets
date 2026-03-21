@@ -26,7 +26,11 @@
         "name": "alignment",
         "type": "select",
         "label": "Text Alignment",
-        "options": ["left", "center", "right"],
+        "options": [
+          { "label": "Left", "value": "left" },
+          { "label": "Center", "value": "center" },
+          { "label": "Right", "value": "right" }
+        ],
         "defaultValue": "left"
       },
       {
@@ -45,7 +49,12 @@
         "name": "padding",
         "type": "select",
         "label": "Padding",
-        "options": ["none", "small", "medium", "large"],
+        "options": [
+          { "label": "None", "value": "none" },
+          { "label": "Small", "value": "small" },
+          { "label": "Medium", "value": "medium" },
+          { "label": "Large", "value": "large" }
+        ],
         "defaultValue": "medium"
       }
     ]
