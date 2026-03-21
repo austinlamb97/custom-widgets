@@ -8,44 +8,38 @@
     "path": "dist",
     "entry": "content.html"
   },
-  "configuration": [
-    {
-      "name": "title",
+  "configuration": {
+    "title": {
       "type": "text",
       "label": "Title",
       "defaultValue": ""
     },
-    {
-      "name": "content",
+    "content": {
       "type": "text",
       "label": "Content (plain text or HTML)",
       "defaultValue": ""
     },
-    {
-      "name": "alignment",
+    "alignment": {
       "type": "select",
       "label": "Text Alignment",
       "options": ["left", "center", "right"],
       "defaultValue": "left"
     },
-    {
-      "name": "backgroundColor",
+    "backgroundColor": {
       "type": "color",
       "label": "Background Color",
       "defaultValue": "#ffffff"
     },
-    {
-      "name": "textColor",
+    "textColor": {
       "type": "color",
       "label": "Text Color",
       "defaultValue": "#000000"
     },
-    {
-      "name": "padding",
+    "padding": {
       "type": "select",
       "label": "Padding",
       "options": ["none", "small", "medium", "large"],
       "defaultValue": "medium"
     }
-  ]
+  }
 }
