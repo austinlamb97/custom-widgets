@@ -4,6 +4,7 @@
   "description": "Configurable text and HTML content block for 2:1 containers",
   "category": "Content",
   "imageName": "content_block",
+  "containers": ["Full width", "Left container"],
   "source": {
     "path": "dist",
     "entry": "content.html"

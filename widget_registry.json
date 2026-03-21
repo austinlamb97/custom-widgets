@@ -75,7 +75,8 @@
         ]
       },
       "containers": [
-        "Full width"
+        "Full width",
+        "Left container"
       ],
       "description": "Configurable text and HTML content block for 2:1 containers",
       "imageName": "content_block",
