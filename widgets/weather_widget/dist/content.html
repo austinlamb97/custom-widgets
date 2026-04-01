@@ -4,171 +4,78 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: transparent;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: transparent; }
     .weather-card {
       background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
-      border-radius: 16px;
-      padding: 32px 40px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 24px;
-      max-width: 900px;
-      margin: 16px auto;
+      border-radius: 16px; padding: 32px 40px; color: #fff;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 24px; max-width: 900px; margin: 16px auto;
       box-shadow: 0 4px 24px rgba(0,0,0,0.15);
     }
-
-    .weather-left {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .weather-city {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-    }
-
-    .weather-condition {
-      font-size: 16px;
-      opacity: 0.85;
-      font-weight: 400;
-    }
-
-    .weather-temp {
-      font-size: 72px;
-      font-weight: 300;
-      line-height: 1;
-      letter-spacing: -2px;
-    }
-
-    .weather-temp sup {
-      font-size: 28px;
-      font-weight: 400;
-      vertical-align: super;
-      letter-spacing: 0;
-    }
-
-    .weather-right {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items: flex-end;
-    }
-
-    .weather-icon {
-      font-size: 64px;
-      line-height: 1;
-    }
-
-    .weather-details {
-      display: flex;
-      gap: 24px;
-      opacity: 0.9;
-    }
-
-    .detail-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-    }
-
-    .detail-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      opacity: 0.75;
-    }
-
-    .detail-value {
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    .weather-updated {
-      font-size: 11px;
-      opacity: 0.6;
-      margin-top: 4px;
-    }
-
+    .weather-left { display: flex; flex-direction: column; gap: 8px; }
+    .weather-city { font-size: 28px; font-weight: 700; letter-spacing: -0.3px; }
+    .weather-condition { font-size: 16px; opacity: 0.85; font-weight: 400; }
+    .weather-temp { font-size: 72px; font-weight: 300; line-height: 1; letter-spacing: -2px; }
+    .weather-temp sup { font-size: 28px; font-weight: 400; vertical-align: super; letter-spacing: 0; }
+    .weather-right { display: flex; flex-direction: column; gap: 12px; align-items: flex-end; }
+    .weather-icon { font-size: 64px; line-height: 1; }
+    .weather-details { display: flex; gap: 24px; opacity: 0.9; }
+    .detail-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+    .detail-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; opacity: 0.75; }
+    .detail-value { font-size: 15px; font-weight: 600; }
+    .weather-updated { font-size: 11px; opacity: 0.6; margin-top: 4px; }
     .weather-error {
-      background: #f5f5f5;
-      border-radius: 16px;
-      padding: 24px 32px;
-      color: #555;
-      text-align: center;
-      max-width: 900px;
-      margin: 16px auto;
-      font-size: 14px;
+      background: #f5f5f5; border-radius: 16px; padding: 24px 32px;
+      color: #555; text-align: center; max-width: 900px; margin: 16px auto; font-size: 14px;
     }
-
     .loading {
       background: linear-gradient(135deg, #90caf9 0%, #64b5f6 100%);
-      border-radius: 16px;
-      padding: 32px 40px;
-      color: #fff;
-      text-align: center;
-      max-width: 900px;
-      margin: 16px auto;
-      font-size: 16px;
-      opacity: 0.8;
+      border-radius: 16px; padding: 32px 40px; color: #fff;
+      text-align: center; max-width: 900px; margin: 16px auto; font-size: 16px; opacity: 0.8;
     }
   </style>
 </head>
 <body>
-
 <div id="weather-root"><div class="loading">Loading weather...</div></div>
-
 <script>
+(function() {
   const WMO_CODES = {
-    0:  { label: 'Clear Sky',          icon: '☀️' },
-    1:  { label: 'Mainly Clear',       icon: '🌤️' },
-    2:  { label: 'Partly Cloudy',      icon: '⛅' },
-    3:  { label: 'Overcast',           icon: '☁️' },
-    45: { label: 'Foggy',              icon: '🌫️' },
-    48: { label: 'Icy Fog',            icon: '🌫️' },
-    51: { label: 'Light Drizzle',      icon: '🌦️' },
-    53: { label: 'Drizzle',            icon: '🌦️' },
-    55: { label: 'Heavy Drizzle',      icon: '🌧️' },
-    61: { label: 'Light Rain',         icon: '🌧️' },
-    63: { label: 'Rain',               icon: '🌧️' },
-    65: { label: 'Heavy Rain',         icon: '🌧️' },
-    71: { label: 'Light Snow',         icon: '🌨️' },
-    73: { label: 'Snow',               icon: '❄️' },
-    75: { label: 'Heavy Snow',         icon: '❄️' },
-    77: { label: 'Snow Grains',        icon: '🌨️' },
-    80: { label: 'Light Showers',      icon: '🌦️' },
-    81: { label: 'Showers',            icon: '🌧️' },
-    82: { label: 'Heavy Showers',      icon: '⛈️' },
-    85: { label: 'Snow Showers',       icon: '🌨️' },
-    86: { label: 'Heavy Snow Showers', icon: '❄️' },
-    95: { label: 'Thunderstorm',       icon: '⛈️' },
-    96: { label: 'Thunderstorm + Hail',icon: '⛈️' },
-    99: { label: 'Thunderstorm + Hail',icon: '⛈️' },
+    0:  { label: 'Clear Sky',           icon: '☀️' },
+    1:  { label: 'Mainly Clear',        icon: '🌤️' },
+    2:  { label: 'Partly Cloudy',       icon: '⛅' },
+    3:  { label: 'Overcast',            icon: '☁️' },
+    45: { label: 'Foggy',               icon: '🌫️' },
+    48: { label: 'Icy Fog',             icon: '🌫️' },
+    51: { label: 'Light Drizzle',       icon: '🌦️' },
+    53: { label: 'Drizzle',             icon: '🌦️' },
+    55: { label: 'Heavy Drizzle',       icon: '🌧️' },
+    61: { label: 'Light Rain',          icon: '🌧️' },
+    63: { label: 'Rain',                icon: '🌧️' },
+    65: { label: 'Heavy Rain',          icon: '🌧️' },
+    71: { label: 'Light Snow',          icon: '🌨️' },
+    73: { label: 'Snow',                icon: '❄️' },
+    75: { label: 'Heavy Snow',          icon: '❄️' },
+    77: { label: 'Snow Grains',         icon: '🌨️' },
+    80: { label: 'Light Showers',       icon: '🌦️' },
+    81: { label: 'Showers',             icon: '🌧️' },
+    82: { label: 'Heavy Showers',       icon: '⛈️' },
+    85: { label: 'Snow Showers',        icon: '🌨️' },
+    86: { label: 'Heavy Snow Showers',  icon: '❄️' },
+    95: { label: 'Thunderstorm',        icon: '⛈️' },
+    96: { label: 'Thunderstorm + Hail', icon: '⛈️' },
+    99: { label: 'Thunderstorm + Hail', icon: '⛈️' },
   };
 
-  const city      = "{{ city }}" || "St. Louis";
-  const latitude  = "{{ latitude }}" || "38.6270";
+  const city      = "{{ city }}"      || "St. Louis";
+  const latitude  = "{{ latitude }}"  || "38.6270";
   const longitude = "{{ longitude }}" || "-90.1994";
-  const units     = "{{ units }}" || "fahrenheit";
+  const units     = "{{ units }}"     || "fahrenheit";
   const unitLabel = units === "fahrenheit" ? "F" : "C";
 
   async function fetchWeather() {
     const root = document.getElementById('weather-root');
+    if (!root) return;
     try {
       const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m&temperature_unit=${units}&wind_speed_unit=mph&timezone=auto`;
       const res  = await fetch(url);
@@ -217,7 +124,7 @@
   }
 
   fetchWeather();
+})();
 </script>
-
 </body>
 </html>
