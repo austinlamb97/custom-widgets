@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "title": "Weather Widget",
+  "description": "Displays current weather conditions for a configured city using Open-Meteo.",
+  "category": "General",
+  "imageName": "weather_widget",
+  "containers": ["Full width"],
+  "source": {
+    "path": "dist",
+    "entry": "content.html"
+  },
+  "configuration": {
+    "properties": [
+      { "name": "city", "type": "text", "label": "City Name", "defaultValue": "St. Louis" },
+      { "name": "latitude", "type": "text", "label": "Latitude", "defaultValue": "38.6270" },
+      { "name": "longitude", "type": "text", "label": "Longitude", "defaultValue": "-90.1994" },
+      {
+        "name": "units",
+        "type": "select",
+        "label": "Temperature Units",
+        "defaultValue": "fahrenheit",
+        "options": [
+          { "label": "Fahrenheit", "value": "fahrenheit" },
+          { "label": "Celsius", "value": "celsius" }
+        ]
+      }
+    ]
+  }
+}
