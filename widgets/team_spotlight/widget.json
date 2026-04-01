@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "title": "Team Spotlight",
+  "description": "Displays three team member cards with name, title, bio, and photo.",
+  "category": "Content",
+  "imageName": "team_spotlight",
+  "containers": ["Full width"],
+  "source": {
+    "path": "dist",
+    "entry": "content.html"
+  },
+  "configuration": {
+    "properties": [
+      { "name": "member1Name", "type": "text", "label": "Member 1 - Name", "defaultValue": "Jane Smith" },
+      { "name": "member1Title", "type": "text", "label": "Member 1 - Title", "defaultValue": "Customer Success Manager" },
+      { "name": "member1Bio", "type": "text", "label": "Member 1 - Bio", "defaultValue": "Jane helps customers get the most out of their investment." },
+      { "name": "member1Photo", "type": "text", "label": "Member 1 - Photo URL", "defaultValue": "" },
+
+      { "name": "member2Name", "type": "text", "label": "Member 2 - Name", "defaultValue": "John Doe" },
+      { "name": "member2Title", "type": "text", "label": "Member 2 - Title", "defaultValue": "Solutions Consultant" },
+      { "name": "member2Bio", "type": "text", "label": "Member 2 - Bio", "defaultValue": "John works with customers to design the right solution." },
+      { "name": "member2Photo", "type": "text", "label": "Member 2 - Photo URL", "defaultValue": "" },
+
+      { "name": "member3Name", "type": "text", "label": "Member 3 - Name", "defaultValue": "Alex Johnson" },
+      { "name": "member3Title", "type": "text", "label": "Member 3 - Title", "defaultValue": "Technical Account Manager" },
+      { "name": "member3Bio", "type": "text", "label": "Member 3 - Bio", "defaultValue": "Alex ensures customers have a smooth technical experience." },
+      { "name": "member3Photo", "type": "text", "label": "Member 3 - Photo URL", "defaultValue": "" },
+
+      { "name": "sectionTitle", "type": "text", "label": "Section Heading", "defaultValue": "Meet Your Team" }
+    ]
+  }
+}

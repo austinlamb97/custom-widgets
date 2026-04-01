@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: transparent;
+    }
+
+    .spotlight-wrapper {
+      max-width: 960px;
+      margin: 16px auto;
+      padding: 0 8px;
+    }
+
+    .spotlight-heading {
+      font-size: 22px;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .spotlight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .member-card {
+      background: #ffffff;
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .member-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #e8eaf6;
+      flex-shrink: 0;
+    }
+
+    .member-initials {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #3f51b5;
+      color: #ffffff;
+      font-size: 26px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .member-name {
+      font-size: 17px;
+      font-weight: 600;
+      color: #1a1a2e;
+      line-height: 1.3;
+    }
+
+    .member-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: #3f51b5;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .member-bio {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 640px) {
+      .spotlight-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="spotlight-wrapper">
+  <div id="spotlight-root"></div>
+</div>
+
+<script>
+(function() {
+  var members = [
+    {
+      name:  "{{ member1Name }}"  || "Jane Smith",
+      title: "{{ member1Title }}" || "Customer Success Manager",
+      bio:   "{{ member1Bio }}"   || "Jane helps customers get the most out of their investment.",
+      photo: "{{ member1Photo }}" || ""
+    },
+    {
+      name:  "{{ member2Name }}"  || "John Doe",
+      title: "{{ member2Title }}" || "Solutions Consultant",
+      bio:   "{{ member2Bio }}"   || "John works with customers to design the right solution.",
+      photo: "{{ member2Photo }}" || ""
+    },
+    {
+      name:  "{{ member3Name }}"  || "Alex Johnson",
+      title: "{{ member3Title }}" || "Technical Account Manager",
+      bio:   "{{ member3Bio }}"   || "Alex ensures customers have a smooth technical experience.",
+      photo: "{{ member3Photo }}" || ""
+    }
+  ];
+
+  var sectionTitle = "{{ sectionTitle }}" || "Meet Your Team";
+
+  function getInitials(name) {
+    var parts = name.trim().split(' ').filter(Boolean);
+    if (parts.length === 0) return '?';
+    if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
+    return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
+  }
+
+  function renderCard(member) {
+    var avatarHtml;
+    if (member.photo && member.photo.trim() !== '') {
+      avatarHtml = '<img class="member-avatar" src="' + member.photo + '" alt="' + member.name + '" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'flex\'">' +
+                   '<div class="member-initials" style="display:none">' + getInitials(member.name) + '</div>';
+    } else {
+      avatarHtml = '<div class="member-initials">' + getInitials(member.name) + '</div>';
+    }
+
+    return '<div class="member-card">' +
+      avatarHtml +
+      '<div class="member-name">' + member.name + '</div>' +
+      '<div class="member-title">' + member.title + '</div>' +
+      '<div class="member-bio">' + member.bio + '</div>' +
+    '</div>';
+  }
+
+  var root = document.getElementById('spotlight-root');
+  if (!root) return;
+
+  var cardsHtml = members.map(renderCard).join('');
+
+  root.innerHTML =
+    '<div class="spotlight-heading">' + sectionTitle + '</div>' +
+    '<div class="spotlight-grid">' + cardsHtml + '</div>';
+})();
+</script>
+</body>
+</html>
