@@ -4,11 +4,8 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 8px;
       overflow: hidden;
+      padding: 8px 0;
     }
     .marquee-wrapper {
       width: 100%;
@@ -33,37 +30,32 @@
 </head>
 <body>
   <div class="marquee-wrapper">
-    <div class="marquee-track" id="track"></div>
+    <div class="marquee-track">
+      <!-- First set -->
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/alex-parrot/bc8bcb1555fd41f5.gif"    alt="alex-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/carlos-parrot/0f5e2e5d3f939d38.gif"  alt="carlos-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/sammi-parrot/81825394d2c3717a.gif"   alt="sammi-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/spencer-parrot/56a27e11ef80c170.gif" alt="spencer-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/max-parrot/08649208de9f00aa.gif"     alt="max-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/chris-parrot/48aba67ac7df58e3.gif"   alt="chris-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/austin-parrot/afb2ac01b047f29d.gif"  alt="austin-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/hideta-parrot/233e350342d8736f.gif"  alt="hideta-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/humitz-parrot/5016165f8540a019.gif"  alt="humitz-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/ainsley-parrot/bc8bcb1555fd41f5.gif" alt="ainsley-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/rachael-parrot/73c25c0a4003bf2c.gif" alt="rachael-parrot" />
+      <!-- Duplicate set for seamless loop -->
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/alex-parrot/bc8bcb1555fd41f5.gif"    alt="alex-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/carlos-parrot/0f5e2e5d3f939d38.gif"  alt="carlos-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/sammi-parrot/81825394d2c3717a.gif"   alt="sammi-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/spencer-parrot/56a27e11ef80c170.gif" alt="spencer-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/max-parrot/08649208de9f00aa.gif"     alt="max-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/chris-parrot/48aba67ac7df58e3.gif"   alt="chris-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/austin-parrot/afb2ac01b047f29d.gif"  alt="austin-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/hideta-parrot/233e350342d8736f.gif"  alt="hideta-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/humitz-parrot/5016165f8540a019.gif"  alt="humitz-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/ainsley-parrot/bc8bcb1555fd41f5.gif" alt="ainsley-parrot" />
+      <img src="https://emoji.slack-edge.com/T030JCUSR5G/rachael-parrot/73c25c0a4003bf2c.gif" alt="rachael-parrot" />
+    </div>
   </div>
-
-  <script>
-  (function() {
-    var parrots = [
-      { url: 'https://emoji.slack-edge.com/T030JCUSR5G/alex-parrot/bc8bcb1555fd41f5.gif',    name: 'alex' },
-      { url: 'https://emoji.slack-edge.com/T030JCUSR5G/carlos-parrot/0f5e2e5d3f939d38.gif',  name: 'carlos' },
-      { url: 'https://emoji.slack-edge.com/T030JCUSR5G/sammi-parrot/81825394d2c3717a.gif',   name: 'sammi' },
-      { url: 'https://emoji.slack-edge.com/T030JCUSR5G/spencer-parrot/56a27e11ef80c170.gif', name: 'spencer' },
-      { url: 'https://emoji.slack-edge.com/T030JCUSR5G/max-parrot/08649208de9f00aa.gif',     name: 'max' },
-      { url: 'https://emoji.slack-edge.com/T030JCUSR5G/chris-parrot/48aba67ac7df58e3.gif',   name: 'chris' },
-      { url: 'https://emoji.slack-edge.com/T030JCUSR5G/austin-parrot/afb2ac01b047f29d.gif',  name: 'austin' },
-      { url: 'https://emoji.slack-edge.com/T030JCUSR5G/hideta-parrot/233e350342d8736f.gif',  name: 'hideta' },
-      { url: 'https://emoji.slack-edge.com/T030JCUSR5G/humitz-parrot/5016165f8540a019.gif',  name: 'humitz' },
-      { url: 'https://emoji.slack-edge.com/T030JCUSR5G/ainsley-parrot/bc8bcb1555fd41f5.gif', name: 'ainsley' },
-      { url: 'https://emoji.slack-edge.com/T030JCUSR5G/rachael-parrot/73c25c0a4003bf2c.gif', name: 'rachael' }
-    ];
-
-    var track = document.getElementById('track');
-
-    // Duplicate the list so the loop is seamless
-    [parrots, parrots].forEach(function(set) {
-      set.forEach(function(p) {
-        var img = document.createElement('img');
-        img.src = p.url;
-        img.alt = p.name + '-parrot';
-        track.appendChild(img);
-      });
-    });
-  })();
-  </script>
 </body>
 </html>
