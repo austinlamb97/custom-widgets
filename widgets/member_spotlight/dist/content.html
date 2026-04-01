@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: transparent;
+    }
+
+    .spotlight-container {
+      width: 100%;
+      padding: 48px 32px;
+      background: #f4f6fb;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    .spotlight-heading {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a1f36;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+
+    .spotlight-divider {
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, #0a7aff, #00c9b1);
+      margin: 10px auto 36px;
+      border-radius: 2px;
+    }
+
+    .cards-row {
+      display: flex;
+      gap: 28px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .member-card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.04);
+      padding: 36px 28px 32px;
+      flex: 1;
+      min-width: 300px;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .member-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.11);
+    }
+
+    .avatar {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0a7aff 0%, #00c9b1 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 18px;
+      flex-shrink: 0;
+      letter-spacing: -1px;
+    }
+
+    .member-name {
+      font-size: 19px;
+      font-weight: 700;
+      color: #1a1f36;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .rank-badge {
+      display: inline-block;
+      background: #eef4ff;
+      color: #0a7aff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .member-title {
+      font-size: 13px;
+      color: #8792a2;
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+
+    .member-divider {
+      width: 32px;
+      height: 1px;
+      background: #e6e9f0;
+      margin: 0 auto 18px;
+    }
+
+    .member-description {
+      font-size: 14px;
+      color: #4a5568;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 680px) {
+      .spotlight-container {
+        padding: 36px 16px;
+      }
+      .cards-row {
+        flex-direction: column;
+        align-items: center;
+      }
+      .member-card {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="spotlight-container">
+    <h2 class="spotlight-heading">{{ section_title }}</h2>
+    <span class="spotlight-divider"></span>
+    <div class="cards-row">
+
+      <div class="member-card">
+        <div class="avatar" id="avatar1"></div>
+        <div class="member-name">{{ member1_name }}</div>
+        <div class="rank-badge">{{ member1_rank }}</div>
+        <div class="member-title">{{ member1_title }}</div>
+        <div class="member-divider"></div>
+        <div class="member-description">{{ member1_description }}</div>
+      </div>
+
+      <div class="member-card">
+        <div class="avatar" id="avatar2"></div>
+        <div class="member-name">{{ member2_name }}</div>
+        <div class="rank-badge">{{ member2_rank }}</div>
+        <div class="member-title">{{ member2_title }}</div>
+        <div class="member-divider"></div>
+        <div class="member-description">{{ member2_description }}</div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    function getInitials(name) {
+      if (!name || name.trim() === '') return '?';
+      var parts = name.trim().split(/\s+/);
+      if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
+      return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
+    }
+
+    var root = (document.currentScript && document.currentScript.getRootNode) ?
+      document.currentScript.getRootNode() : document;
+
+    var members = [
+      { id: 'avatar1', name: '{{ member1_name }}' },
+      { id: 'avatar2', name: '{{ member2_name }}' }
+    ];
+
+    members.forEach(function(m) {
+      var el = root.querySelector ? root.querySelector('#' + m.id) : document.getElementById(m.id);
+      if (el) el.textContent = getInitials(m.name);
+    });
+  })();
+  </script>
+</body>
+</html>

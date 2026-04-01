@@ -44,6 +44,87 @@
       "source": { "path": "widgets/content_block/dist", "entry": "content.html" }
     },
     {
+      "category": "Community",
+      "configuration": {
+        "properties": [
+          {
+            "name": "section_title",
+            "type": "text",
+            "label": "Section Heading",
+            "defaultValue": "Community Spotlight"
+          },
+          {
+            "name": "member1_name",
+            "type": "text",
+            "label": "Member 1: Name",
+            "defaultValue": ""
+          },
+          {
+            "name": "member1_rank",
+            "type": "text",
+            "label": "Member 1: Community Rank",
+            "defaultValue": ""
+          },
+          {
+            "name": "member1_title",
+            "type": "text",
+            "label": "Member 1: Job Title",
+            "defaultValue": ""
+          },
+          {
+            "name": "member1_description",
+            "type": "text",
+            "label": "Member 1: Description",
+            "defaultValue": ""
+          },
+          {
+            "name": "member2_name",
+            "type": "text",
+            "label": "Member 2: Name",
+            "defaultValue": ""
+          },
+          {
+            "name": "member2_rank",
+            "type": "text",
+            "label": "Member 2: Community Rank",
+            "defaultValue": ""
+          },
+          {
+            "name": "member2_title",
+            "type": "text",
+            "label": "Member 2: Job Title",
+            "defaultValue": ""
+          },
+          {
+            "name": "member2_description",
+            "type": "text",
+            "label": "Member 2: Description",
+            "defaultValue": ""
+          }
+        ]
+      },
+      "containers": [
+        "Full width"
+      ],
+      "description": "Highlights two community members with their name, rank, title, and bio.",
+      "imageName": "member_spotlight",
+      "settings": {
+        "configurable": true,
+        "editable": true,
+        "removable": true,
+        "shared": false,
+        "movable": false
+      },
+      "title": "Member Spotlight",
+      "version": "1.0.0",
+      "widgetsLibrary": true,
+      "type": "member_spotlight",
+      "source": {
+        "path": "widgets/member_spotlight/dist",
+        "entry": "content.html"
+      }
+    },
+    {
       "category": "Salesforce",
       "containers": ["Full width"],
       "description": "Submit a Salesforce lead referral from the community",

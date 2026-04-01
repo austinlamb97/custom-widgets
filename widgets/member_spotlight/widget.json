@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "title": "Member Spotlight",
+  "description": "Highlights two community members with their name, rank, title, and bio.",
+  "category": "Community",
+  "imageName": "member_spotlight",
+  "containers": ["Full width"],
+  "source": {
+    "path": "dist",
+    "entry": "content.html"
+  },
+  "configuration": {
+    "properties": [
+      { "name": "section_title", "type": "text", "label": "Section Heading", "defaultValue": "Community Spotlight" },
+      { "name": "member1_name", "type": "text", "label": "Member 1: Name", "defaultValue": "" },
+      { "name": "member1_rank", "type": "text", "label": "Member 1: Community Rank", "defaultValue": "" },
+      { "name": "member1_title", "type": "text", "label": "Member 1: Job Title", "defaultValue": "" },
+      { "name": "member1_description", "type": "text", "label": "Member 1: Description", "defaultValue": "" },
+      { "name": "member2_name", "type": "text", "label": "Member 2: Name", "defaultValue": "" },
+      { "name": "member2_rank", "type": "text", "label": "Member 2: Community Rank", "defaultValue": "" },
+      { "name": "member2_title", "type": "text", "label": "Member 2: Job Title", "defaultValue": "" },
+      { "name": "member2_description", "type": "text", "label": "Member 2: Description", "defaultValue": "" }
+    ]
+  }
+}
