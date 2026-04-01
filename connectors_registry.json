@@ -18,6 +18,18 @@
       },
       "request_body": "{% set body = body_text | from_json %}\n{\n  \"FirstName\": \"{{ body.firstName }}\",\n  \"LastName\": \"{{ body.lastName }}\",\n  \"Email\": \"{{ body.email }}\",\n  \"Company\": \"{{ body.company }}\",\n  \"Title\": \"{{ body.title }}\",\n  \"Phone\": \"{{ body.phone }}\",\n  \"LeadSource\": \"{{ body.leadSource }}\"\n}",
       "permalink": "salesforce-create-lead"
+    },
+    {
+      "name": "Open-Meteo Weather",
+      "url": "https://api.open-meteo.com/v1/forecast",
+      "method": "GET",
+      "headers": [
+        { "key": "Accept", "value": "application/json", "overridable": false }
+      ],
+      "authentication": {
+        "type": "none"
+      },
+      "permalink": "open-meteo-weather"
     }
   ]
 }
