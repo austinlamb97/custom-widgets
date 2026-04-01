@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "title": "Alex Parrot",
+  "description": "Displays the animated alex-parrot emoji.",
+  "category": "General",
+  "imageName": "alex_parrot",
+  "containers": ["Full width", "Left container"],
+  "source": {
+    "path": "dist",
+    "entry": "content.html"
+  },
+  "configuration": {
+    "properties": []
+  }
+}

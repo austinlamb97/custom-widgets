@@ -1,47 +1,127 @@
 {
   "widgets": [
     {
+      "category": "General",
+      "configuration": {
+        "properties": []
+      },
+      "containers": [
+        "Full width",
+        "Left container"
+      ],
+      "description": "Displays the animated alex-parrot emoji.",
+      "imageName": "alex_parrot",
+      "settings": {
+        "configurable": true,
+        "editable": true,
+        "removable": true,
+        "shared": false,
+        "movable": false
+      },
+      "title": "Alex Parrot",
+      "version": "1.0.0",
+      "widgetsLibrary": true,
+      "type": "alex_parrot",
+      "source": {
+        "path": "widgets/alex_parrot/dist",
+        "entry": "content.html"
+      }
+    },
+    {
       "category": "Content",
       "configuration": {
         "properties": [
-          { "name": "title", "type": "text", "label": "Title", "defaultValue": "" },
-          { "name": "content", "type": "text", "label": "Content (plain text or HTML)", "defaultValue": "" },
+          {
+            "name": "title",
+            "type": "text",
+            "label": "Title",
+            "defaultValue": ""
+          },
+          {
+            "name": "content",
+            "type": "text",
+            "label": "Content (plain text or HTML)",
+            "defaultValue": ""
+          },
           {
             "name": "alignment",
             "type": "select",
             "label": "Text Alignment",
             "options": [
-              { "label": "Left", "value": "left" },
-              { "label": "Center", "value": "center" },
-              { "label": "Right", "value": "right" }
+              {
+                "label": "Left",
+                "value": "left"
+              },
+              {
+                "label": "Center",
+                "value": "center"
+              },
+              {
+                "label": "Right",
+                "value": "right"
+              }
             ],
             "defaultValue": "left"
           },
-          { "name": "backgroundColor", "type": "color", "label": "Background Color", "defaultValue": "#ffffff" },
-          { "name": "textColor", "type": "color", "label": "Text Color", "defaultValue": "#000000" },
+          {
+            "name": "backgroundColor",
+            "type": "color",
+            "label": "Background Color",
+            "defaultValue": "#ffffff"
+          },
+          {
+            "name": "textColor",
+            "type": "color",
+            "label": "Text Color",
+            "defaultValue": "#000000"
+          },
           {
             "name": "padding",
             "type": "select",
             "label": "Padding",
             "options": [
-              { "label": "None", "value": "none" },
-              { "label": "Small", "value": "small" },
-              { "label": "Medium", "value": "medium" },
-              { "label": "Large", "value": "large" }
+              {
+                "label": "None",
+                "value": "none"
+              },
+              {
+                "label": "Small",
+                "value": "small"
+              },
+              {
+                "label": "Medium",
+                "value": "medium"
+              },
+              {
+                "label": "Large",
+                "value": "large"
+              }
             ],
             "defaultValue": "medium"
           }
         ]
       },
-      "containers": ["Full width", "Left container"],
+      "containers": [
+        "Full width",
+        "Left container"
+      ],
       "description": "Configurable text and HTML content block for 2:1 containers",
       "imageName": "content_block",
-      "settings": { "configurable": true, "editable": true, "removable": true, "shared": false, "movable": false },
+      "settings": {
+        "configurable": true,
+        "editable": true,
+        "removable": true,
+        "shared": false,
+        "movable": false
+      },
       "title": "Content Block",
       "version": "1.0.0",
       "widgetsLibrary": true,
       "type": "content_block",
-      "source": { "path": "widgets/content_block/dist", "entry": "content.html" }
+      "source": {
+        "path": "widgets/content_block/dist",
+        "entry": "content.html"
+      }
     },
     {
       "category": "Community",
@@ -126,15 +206,192 @@
     },
     {
       "category": "Salesforce",
-      "containers": ["Full width"],
+      "containers": [
+        "Full width"
+      ],
       "description": "Submit a Salesforce lead referral from the community",
       "imageName": "salesforce_widget",
-      "settings": { "configurable": true, "editable": true, "removable": true, "shared": false, "movable": false },
+      "settings": {
+        "configurable": true,
+        "editable": true,
+        "removable": true,
+        "shared": false,
+        "movable": false
+      },
       "title": "Salesforce lead form",
       "version": "1.0.0",
       "widgetsLibrary": true,
       "type": "salesforce_lead_form",
-      "source": { "path": "widgets/salesforce_lead_form/dist", "entry": "content.html" }
+      "source": {
+        "path": "widgets/salesforce_lead_form/dist",
+        "entry": "content.html"
+      }
+    },
+    {
+      "category": "Content",
+      "configuration": {
+        "properties": [
+          {
+            "name": "member1Name",
+            "type": "text",
+            "label": "Member 1 - Name",
+            "defaultValue": "Jane Smith"
+          },
+          {
+            "name": "member1Title",
+            "type": "text",
+            "label": "Member 1 - Title",
+            "defaultValue": "Customer Success Manager"
+          },
+          {
+            "name": "member1Bio",
+            "type": "text",
+            "label": "Member 1 - Bio",
+            "defaultValue": "Jane helps customers get the most out of their investment."
+          },
+          {
+            "name": "member1Photo",
+            "type": "text",
+            "label": "Member 1 - Photo URL",
+            "defaultValue": ""
+          },
+          {
+            "name": "member2Name",
+            "type": "text",
+            "label": "Member 2 - Name",
+            "defaultValue": "John Doe"
+          },
+          {
+            "name": "member2Title",
+            "type": "text",
+            "label": "Member 2 - Title",
+            "defaultValue": "Solutions Consultant"
+          },
+          {
+            "name": "member2Bio",
+            "type": "text",
+            "label": "Member 2 - Bio",
+            "defaultValue": "John works with customers to design the right solution."
+          },
+          {
+            "name": "member2Photo",
+            "type": "text",
+            "label": "Member 2 - Photo URL",
+            "defaultValue": ""
+          },
+          {
+            "name": "member3Name",
+            "type": "text",
+            "label": "Member 3 - Name",
+            "defaultValue": "Alex Johnson"
+          },
+          {
+            "name": "member3Title",
+            "type": "text",
+            "label": "Member 3 - Title",
+            "defaultValue": "Technical Account Manager"
+          },
+          {
+            "name": "member3Bio",
+            "type": "text",
+            "label": "Member 3 - Bio",
+            "defaultValue": "Alex ensures customers have a smooth technical experience."
+          },
+          {
+            "name": "member3Photo",
+            "type": "text",
+            "label": "Member 3 - Photo URL",
+            "defaultValue": ""
+          },
+          {
+            "name": "sectionTitle",
+            "type": "text",
+            "label": "Section Heading",
+            "defaultValue": "Meet Your Team"
+          }
+        ]
+      },
+      "containers": [
+        "Full width"
+      ],
+      "description": "Displays three team member cards with name, title, bio, and photo.",
+      "imageName": "team_spotlight",
+      "settings": {
+        "configurable": true,
+        "editable": true,
+        "removable": true,
+        "shared": false,
+        "movable": false
+      },
+      "title": "Team Spotlight",
+      "version": "1.0.0",
+      "widgetsLibrary": true,
+      "type": "team_spotlight",
+      "source": {
+        "path": "widgets/team_spotlight/dist",
+        "entry": "content.html"
+      }
+    },
+    {
+      "category": "General",
+      "configuration": {
+        "properties": [
+          {
+            "name": "city",
+            "type": "text",
+            "label": "City Name",
+            "defaultValue": "St. Louis"
+          },
+          {
+            "name": "latitude",
+            "type": "text",
+            "label": "Latitude",
+            "defaultValue": "38.6270"
+          },
+          {
+            "name": "longitude",
+            "type": "text",
+            "label": "Longitude",
+            "defaultValue": "-90.1994"
+          },
+          {
+            "name": "units",
+            "type": "select",
+            "label": "Temperature Units",
+            "defaultValue": "fahrenheit",
+            "options": [
+              {
+                "label": "Fahrenheit",
+                "value": "fahrenheit"
+              },
+              {
+                "label": "Celsius",
+                "value": "celsius"
+              }
+            ]
+          }
+        ]
+      },
+      "containers": [
+        "Full width"
+      ],
+      "description": "Displays current weather conditions for a configured city using Open-Meteo.",
+      "imageName": "weather_widget",
+      "settings": {
+        "configurable": true,
+        "editable": true,
+        "removable": true,
+        "shared": false,
+        "movable": false
+      },
+      "title": "Weather Widget",
+      "version": "1.0.0",
+      "widgetsLibrary": true,
+      "type": "weather_widget",
+      "source": {
+        "path": "widgets/weather_widget/dist",
+        "entry": "content.html"
+      }
     }
   ]
 }

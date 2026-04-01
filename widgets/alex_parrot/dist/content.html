@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    img.parrot {
+      width: 64px;
+      height: 64px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <img
+    class="parrot"
+    src="https://emoji.slack-edge.com/T030JCUSR5G/alex-parrot/bc8bcb1555fd41f5.gif"
+    alt="alex-parrot"
+  />
+  <script>
+  (function() {
+    var host = document.querySelector('gs-cc-registry-widget[data-widget-type="alex_parrot"]');
+    if (!host || !host.shadowRoot) return;
+    var shadow = host.shadowRoot;
+    var style = document.createElement('style');
+    style.textContent = 'body { margin: 0; padding: 8px; display: flex; justify-content: center; align-items: center; } img.parrot { width: 64px; height: 64px; display: block; }';
+    shadow.appendChild(style);
+    var img = document.createElement('img');
+    img.className = 'parrot';
+    img.src = 'https://emoji.slack-edge.com/T030JCUSR5G/alex-parrot/bc8bcb1555fd41f5.gif';
+    img.alt = 'alex-parrot';
+    shadow.appendChild(img);
+  })();
+  </script>
+</body>
+</html>
