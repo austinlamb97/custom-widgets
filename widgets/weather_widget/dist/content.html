@@ -39,6 +39,7 @@
 <body>
 <div id="weather-root"><div class="loading">Loading weather...</div></div>
 <script src="https://static.customer-hub.northpass.com/widget-sdk/latest/index.umd.js"></script>
+<script src="https://static.customer-hub.northpass.com/widget-sdk/latest/index.umd.js"></script>
 <script>
 (function() {
   const WMO_CODES = {
@@ -74,12 +75,24 @@
   const units     = "{{ units }}"     || "fahrenheit";
   const unitLabel = units === "fahrenheit" ? "F" : "C";
 
+  function waitForSDK(callback, attempts) {
+    attempts = attempts || 0;
+    if (window.WidgetServiceSDK) {
+      callback();
+    } else if (attempts < 20) {
+      setTimeout(function() { waitForSDK(callback, attempts + 1); }, 250);
+    } else {
+      var root = document.getElementById('weather-root');
+      if (root) root.innerHTML = '<div class="weather-error">SDK failed to load.</div>';
+    }
+  }
+
   async function fetchWeather() {
-    const root = document.getElementById('weather-root');
+    var root = document.getElementById('weather-root');
     if (!root) return;
     try {
-      const sdk = new window.WidgetServiceSDK();
-      const result = await sdk.connectors.execute({
+      var sdk = new window.WidgetServiceSDK();
+      var result = await sdk.connectors.execute({
         permalink: "open-meteo-weather",
         method: "GET",
         queryParams: {
@@ -92,15 +105,15 @@
         }
       });
 
-      const data      = typeof result === 'string' ? JSON.parse(result) : result;
-      const current   = data.current;
-      const code      = current.weather_code;
-      const condition = WMO_CODES[code] || { label: 'Unknown', icon: '🌡️' };
-      const temp      = Math.round(current.temperature_2m);
-      const feelsLike = Math.round(current.apparent_temperature);
-      const humidity  = current.relative_humidity_2m;
-      const wind      = Math.round(current.wind_speed_10m);
-      const updated   = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      var data      = typeof result === 'string' ? JSON.parse(result) : result;
+      var current   = data.current;
+      var code      = current.weather_code;
+      var condition = WMO_CODES[code] || { label: 'Unknown', icon: '🌡️' };
+      var temp      = Math.round(current.temperature_2m);
+      var feelsLike = Math.round(current.apparent_temperature);
+      var humidity  = current.relative_humidity_2m;
+      var wind      = Math.round(current.wind_speed_10m);
+      var updated   = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
       root.innerHTML = `
         <div class="weather-card">
@@ -130,11 +143,11 @@
         </div>
       `;
     } catch (err) {
-      root.innerHTML = `<div class="weather-error">Unable to load weather data.<br><small>${err.message}</small></div>`;
+      root.innerHTML = '<div class="weather-error">Unable to load weather data.<br><small>' + err.message + '</small></div>';
     }
   }
 
-  fetchWeather();
+  waitForSDK(fetchWeather);
 })();
 </script>
 </body>
