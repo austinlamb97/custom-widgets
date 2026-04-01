@@ -38,6 +38,7 @@
 </head>
 <body>
 <div id="weather-root"><div class="loading">Loading weather...</div></div>
+<script src="https://static.customer-hub.northpass.com/widget-sdk/latest/index.umd.js"></script>
 <script>
 (function() {
   const WMO_CODES = {
@@ -77,23 +78,21 @@
     const root = document.getElementById('weather-root');
     if (!root) return;
     try {
-      const params = new URLSearchParams({
-        latitude:    latitude,
-        longitude:   longitude,
-        current:     'temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m',
-        temperature_unit: units,
-        wind_speed_unit:  'mph',
-        timezone:    'auto'
+      const sdk = new window.WidgetServiceSDK();
+      const result = await sdk.connectors.execute({
+        permalink: "open-meteo-weather",
+        method: "GET",
+        queryParams: {
+          latitude:         latitude,
+          longitude:        longitude,
+          current:          'temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m',
+          temperature_unit: units,
+          wind_speed_unit:  'mph',
+          timezone:         'auto'
+        }
       });
 
-      const res = await fetch(`/widget-service/connectors/open-meteo-weather/execute?${params.toString()}`, {
-        method: 'GET',
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (!res.ok) throw new Error('Connector error: ' + res.status);
-      const data = await res.json();
-
+      const data      = typeof result === 'string' ? JSON.parse(result) : result;
       const current   = data.current;
       const code      = current.weather_code;
       const condition = WMO_CODES[code] || { label: 'Unknown', icon: '🌡️' };
@@ -131,7 +130,7 @@
         </div>
       `;
     } catch (err) {
-      root.innerHTML = `<div class="weather-error">Unable to load weather data. Check the latitude/longitude in the widget config.<br><small>${err.message}</small></div>`;
+      root.innerHTML = `<div class="weather-error">Unable to load weather data.<br><small>${err.message}</small></div>`;
     }
   }
 
