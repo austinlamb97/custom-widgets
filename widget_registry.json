@@ -44,35 +44,6 @@
       "source": { "path": "widgets/content_block/dist", "entry": "content.html" }
     },
     {
-      "type": "weather_widget",
-      "title": "Weather Widget",
-      "version": "1.0.0",
-      "description": "Displays current weather conditions for a configured city using Open-Meteo.",
-      "category": "General",
-      "imageName": "weather_widget",
-      "containers": ["Full width"],
-      "widgetsLibrary": true,
-      "settings": { "configurable": true, "editable": true, "removable": true, "shared": false, "movable": false },
-      "source": { "path": "widgets/weather_widget/dist", "entry": "content.html" },
-      "configuration": {
-        "properties": [
-          { "name": "city", "type": "text", "label": "City Name", "defaultValue": "St. Louis" },
-          { "name": "latitude", "type": "text", "label": "Latitude", "defaultValue": "38.6270" },
-          { "name": "longitude", "type": "text", "label": "Longitude", "defaultValue": "-90.1994" },
-          {
-            "name": "units",
-            "type": "select",
-            "label": "Temperature Units",
-            "defaultValue": "fahrenheit",
-            "options": [
-              { "label": "Fahrenheit", "value": "fahrenheit" },
-              { "label": "Celsius", "value": "celsius" }
-            ]
-          }
-        ]
-      }
-    },
-    {
       "category": "Salesforce",
       "containers": ["Full width"],
       "description": "Submit a Salesforce lead referral from the community",
@@ -83,35 +54,6 @@
       "widgetsLibrary": true,
       "type": "salesforce_lead_form",
       "source": { "path": "widgets/salesforce_lead_form/dist", "entry": "content.html" }
-    },
-    {
-      "type": "team_spotlight",
-      "title": "Team Spotlight",
-      "version": "1.0.0",
-      "description": "Displays three team member cards with name, title, bio, and photo.",
-      "category": "Content",
-      "imageName": "team_spotlight",
-      "containers": ["Full width"],
-      "widgetsLibrary": true,
-      "settings": { "configurable": true, "editable": true, "removable": true, "shared": false, "movable": false },
-      "source": { "path": "widgets/team_spotlight/dist", "entry": "content.html" },
-      "configuration": {
-        "properties": [
-          { "name": "sectionTitle", "type": "text", "label": "Section Heading", "defaultValue": "Meet Your Team" },
-          { "name": "member1Name", "type": "text", "label": "Member 1 - Name", "defaultValue": "Jane Smith" },
-          { "name": "member1Title", "type": "text", "label": "Member 1 - Title", "defaultValue": "Customer Success Manager" },
-          { "name": "member1Bio", "type": "text", "label": "Member 1 - Bio", "defaultValue": "Jane helps customers get the most out of their investment." },
-          { "name": "member1Photo", "type": "text", "label": "Member 1 - Photo URL", "defaultValue": "" },
-          { "name": "member2Name", "type": "text", "label": "Member 2 - Name", "defaultValue": "John Doe" },
-          { "name": "member2Title", "type": "text", "label": "Member 2 - Title", "defaultValue": "Solutions Consultant" },
-          { "name": "member2Bio", "type": "text", "label": "Member 2 - Bio", "defaultValue": "John works with customers to design the right solution." },
-          { "name": "member2Photo", "type": "text", "label": "Member 2 - Photo URL", "defaultValue": "" },
-          { "name": "member3Name", "type": "text", "label": "Member 3 - Name", "defaultValue": "Alex Johnson" },
-          { "name": "member3Title", "type": "text", "label": "Member 3 - Title", "defaultValue": "Technical Account Manager" },
-          { "name": "member3Bio", "type": "text", "label": "Member 3 - Bio", "defaultValue": "Alex ensures customers have a smooth technical experience." },
-          { "name": "member3Photo", "type": "text", "label": "Member 3 - Photo URL", "defaultValue": "" }
-        ]
-      }
     }
   ]
 }
